@@ -1,54 +1,35 @@
-FROM ubuntu:16.04
+# Use a base image with Ubuntu as the operating system
+FROM node:latest
 
+# Set environment variables to avoid interactive prompts during installation
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update the package list and install required dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    git \
+    python3.10 \
+    python3-pip \
+    ninja-build \
+    gcc-12 \
+    cmake \
+    make
+
+    
+#install curaEngine
+Run apt-get -y install cura-engine
+
+# CMD ["./build/CuraEngine"]
+
+# Expose port 8080
 EXPOSE 8080
-ENV PORT 8080
-# Install Packages
+ENV PORT=8080
 
-RUN apt update \
-    && apt install -y apt-utils libtool dh-autoreconf \
-    && apt install -y cmake python3-dev python3-sip-dev git
+COPY server /server
 
-# Add Directories
+# Install server dependencies
+WORKDIR /server
+RUN npm install
 
-
-ADD cura-engine/protobuf-3.6.1/ /cura/protobuf
-ADD cura-engine/libArcus-3.6.0/ /cura/libArcus
-ADD cura-engine/CuraEngine-3.6.0/ /cura/curaEngine
-ADD cura-engine/printer-settings/ /printer-settings
-
-# Install Protobuf
-
-WORKDIR /cura/protobuf
-RUN chmod +x ./autogen.sh && ./autogen.sh
-RUN chmod +x ./configure && ./configure
-RUN make
-RUN make install
-RUN ldconfig
-
-# Install libArcus
-
-RUN mkdir /cura/libArcus/build
-WORKDIR /cura/libArcus/build
-RUN cmake ..
-RUN make
-RUN make install
-
-# Install CuraEngine
-
-RUN mkdir /cura/curaEngine/build
-WORKDIR /cura/curaEngine/build
-RUN cmake ..
-RUN make
-RUN make install
-
-# install node
-RUN apt install curl
-RUN curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-
-# install server
-WORKDIR /
-ADD /server /server
-RUN apt install -y nodejs
-ARG CACHE_DATE=2016-01-01
-RUN cd server && npm install
+# Start your server when the container runs
+CMD ["node", "app.js"]
