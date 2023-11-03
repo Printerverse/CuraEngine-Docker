@@ -1,2 +1,4 @@
 .DS_store
-./server/node_modules
+server/node_modules
+printerDefinitions
+server/uploads

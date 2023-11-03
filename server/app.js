@@ -5,11 +5,11 @@ const { sliceModel } = require("./slice");
 const path = require("path");
 require("dotenv").config();
 const { dirname } = require("path");
+const { randomUUID } = require("crypto");
 const appDir = dirname(require.main.filename);
 
 app.use(express.urlencoded({ extended: false, limit: "50mb" }));
 
-console.log(process.env.NODE_PATH);
 
 const PORT = process.env.PORT || 3000;
 
@@ -29,9 +29,13 @@ app.get("/", (req, res) => {
 });
 
 app.post("/slice", upload.single("uploaded_file"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send('No files were uploaded.');
+  }
   sliceModel(req.file.filename, req.body.printer);
   res.download(`${appDir}/outputs/${req.file.filename.split(".")[0]}.gcode`);
 });
+
 
 app.post("sliceCustom",(req,res) =>{
 

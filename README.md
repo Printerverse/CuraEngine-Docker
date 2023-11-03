@@ -20,3 +20,9 @@ When you get an slicing error simmilar to this:
 ```Trying to retrieve setting with no value given: roofing_layer_count```
 
 To resolve the issue with the command problem when using Cura printer profiles with CuraEngine, you should add the setting to the sliceInformation.json file and assign it a default value. The error arises due to the manner in which Cura typically includes parameters in the command line call.
+
+## Debuging 
+
+To test this file localy you can run the setup.sh file in the terminal it will do everything you need to test the server localy
+you will need linux or wsl installed to run this script
+run: ````bash test.sh ``` (this will pull the newest printer definitions from github, install all dependensis for the node server and start the server)
