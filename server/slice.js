@@ -4,13 +4,21 @@ const { dirname } = require("path");
 const appDir = dirname(require.main.filename);
 const filePath = `${appDir}/uploads`;
 
+const getSlicerInformation = ()=>{
+  const slicerInformation = require("./slicerInformation.json");
+  return slicerInformation.map((slicer)=>{
+    if(typeof slicer === "string") return `-s ${Object.keys(slicer)} = "${slicer}"`
+    return `-s ${Object.keys(slicer)} = ${slicer}`
+  }).join()
+}
+
 const sliceModel = (
   input_file,
-  printer_def = "printer-settings/ultimaker3.def.json"
-) => {
+  printer_def = "printerDefinitions/ultimaker3.def.json"
+  ) => {
   const outputPath = `${appDir}/outputs/${input_file.split(".")[0]}.gcode`;
   const output = execSync(
-    `CuraEngine slice -v -j ${printer_def} -o ${outputPath}  -s infill_line_distance=0 -l ${filePath}/${input_file}`,
+    `CuraEngine slice -v -p -j ${printer_def} -o ${outputPath} ${getSlicerInformation()} -l ${filePath}/${input_file}`,
     { encoding: "utf-8" }
   ); // the default is 'buffer'
 

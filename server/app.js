@@ -29,10 +29,14 @@ app.get("/", (req, res) => {
 });
 
 app.post("/slice", upload.single("uploaded_file"), (req, res) => {
-  console.log(req.file);
-  sliceModel(req.file.filename);
+  sliceModel(req.file.filename, req.body.printer);
   res.download(`${appDir}/outputs/${req.file.filename.split(".")[0]}.gcode`);
 });
+
+app.post("sliceCustom",(req,res) =>{
+
+
+})
 
 app.listen(PORT, () => {
   console.log(`server running on ${PORT}`);

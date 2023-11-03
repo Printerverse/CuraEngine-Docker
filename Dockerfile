@@ -15,11 +15,13 @@ RUN apt-get update && \
     cmake \
     make
 
-    
 #install curaEngine
-Run apt-get -y install cura-engine
+RUN apt-get -y install cura-engine
 
-# CMD ["./build/CuraEngine"]
+# Clone the cura repository and copy the definitions folder to the desired folder path 
+RUN git clone https://github.com/Ultimaker/Cura.git && \
+    cp -r Cura/resources/definitions ./printerDefinitions && \
+    rm -rf Cura
 
 # Expose port 8080
 EXPOSE 8080
