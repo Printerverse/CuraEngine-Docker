@@ -1,5 +1,22 @@
 {
-    "machine_extruder_cooloing_fan_number":0,
+    "machine_extruder_cooling_fan_number":0,
+    "center_object":true,
     "cool_min_temperature":50,
-    "roofing_monotonic": false
+    "roofing_monotonic": false,
+    "material_shrinkage_percentage":100,
+    "wireframe_enabled":false,
+    "support_tree_collision_resolution":0.1,
+    "adhesion_extruder_nr":0,
+    "roofing_layer_count":2,
+    "fill_perimeter_gaps": true,
+    "filter_out_tiny_gaps": false,
+    "speed_equalize_flow_enabled":false,
+    "travel_compensate_overlapping_walls_0_enabled":false,
+    "travel_compensate_overlapping_walls_x_enabled":false,
+    "travel_compensate_overlapping_walls_y_enabled":false,
+    "outer_inset_first":false,
+    "wall_min_flow":50,
+    "wall_min_flow_retract": 50,
+    "limit_support_retractions":false,
+    "material_flow_dependent_temperature": 200
 }

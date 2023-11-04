@@ -1,6 +1,8 @@
 # CuraEngine-Docker
 This is a fork of https://github.com/Printerverse/CuraEngine-Docker
 
+Works with cura Version 5.5
+
 I updated the docker file to work with newer versions of curaEngine and automaticly get the newest printer definition files.
 I also extended the functionality of the node Server added a way to slice for a specific printer and added support for additional parameters 
 
@@ -24,5 +26,7 @@ To resolve the issue with the command problem when using Cura printer profiles w
 ## Debuging 
 
 To test this file localy you can run the setup.sh file in the terminal it will do everything you need to test the server localy
-you will need linux or wsl installed to run this script
-run: ````bash test.sh ``` (this will pull the newest printer definitions from github, install all dependensis for the node server and start the server)
+It is recommended to use linux or wsl to run this code
+run: ```bash test.sh ``` (this will pull the newest printer definitions from github, install all dependensis for the node server and start the server)
+
+When using wsl you have to configure a port forwarding from port 3000 on wsl to your windows system (tutorial: https://en.number13.de/wsl2-windows-subsystem-ports-forwarding/).

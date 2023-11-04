@@ -1,4 +1,4 @@
-if ! command -v cura_engine &> /dev/null
+if ! command -v CuraEngine &> /dev/null
 then
     # ask the user if cura engine is installed
     echo "Cura Engine isnt installed or not in this path. Would you like to install it? (y/n)"
@@ -32,8 +32,9 @@ if [ -d "uploads" ]
 then
     echo "uploads directory already exists"
 else
-    echo "creating uploads directory"
+    echo "creating uploads and outputs directory"
     mkdir uploads
+    mkdir outputs
 fi
 
 echo "installing dependencies..." && \
