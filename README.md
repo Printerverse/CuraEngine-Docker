@@ -30,3 +30,9 @@ It is recommended to use linux or wsl to run this code
 run: ```bash test.sh ``` (this will pull the newest printer definitions from github, install all dependensis for the node server and start the server)
 
 When using wsl you have to configure a port forwarding from port 3000 on wsl to your windows system (tutorial: https://en.number13.de/wsl2-windows-subsystem-ports-forwarding/).
+
+## TODO
+
+[] add support for other printers than the ultimaker 3
+[] check for security problems (file code injection maby possible)
+[] check if the dockerfile still works like intendet 
