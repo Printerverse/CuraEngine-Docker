@@ -33,6 +33,7 @@ When using wsl you have to configure a port forwarding from port 3000 on wsl to 
 
 ## TODO
 
-[] add support for other printers than the ultimaker 3
-[] check for security problems (file code injection maby possible)
-[] check if the dockerfile still works like intendet 
+- add support for other printers than the ultimaker 3
+- allow for print options to be passed to the server
+- check for security problems (file code injection maby possible)
+- check if the dockerfile still works like intendet 

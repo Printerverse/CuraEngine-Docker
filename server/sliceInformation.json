@@ -1,6 +1,5 @@
 {
     "machine_extruder_cooling_fan_number":0,
-    "center_object":true,
     "cool_min_temperature":50,
     "roofing_monotonic": false,
     "material_shrinkage_percentage":100,
@@ -15,7 +14,7 @@
     "travel_compensate_overlapping_walls_x_enabled":false,
     "travel_compensate_overlapping_walls_y_enabled":false,
     "outer_inset_first":false,
-    "wall_min_flow":50,
+    "wall_min_flow":95,
     "wall_min_flow_retract": 50,
     "limit_support_retractions":false,
     "material_flow_dependent_temperature": 200
